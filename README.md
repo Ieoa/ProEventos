@@ -1,1 +1,1 @@
-Projeto onde pretendo usar APIs, .NET, angular e EF core
+Projeto com uso de  APIs, .NET, angular e EF core. tenho o intuíto de aprender mais sobre essas tecnologias, aperfeiçoar a manipulação de dados e data base, fazer sistemas de integração de login de clientes e versionamentos.
