@@ -5,39 +5,31 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace ProEventos.api.Controllers
+namespace ProEventos.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class EventoController : ControllerBase
     {
-        public EventoController()
-        {
 
+
+        private readonly DataContexte _context;
+
+        public EventoController(DataContexte context)
+        {
+            _context = context;
         }
 
         [HttpGet]
-        public Evento Get()
+        public IEnumerable<Evento> Get()
         {
-            return new Evento()
-            {
-                EventoID = 1,
-                Tema = " Angular 11 e .NET 5",
-                Local = "Belo horizonte ",
-                Lote = "1º Lote ",
-                QtdPessoas = 250,
-                DataEvento = DateTime.Now.AddDays(2).ToString(),
-                ImagemURL = "foto.png"
-
-
-
-            };
-
+            return _context.Eventos;
         }
-        [HttpPost]
-        public string Post()
+
+        [HttpGet("{id}")]
+        public Evento GetById(int id)
         {
-            return ok();
+            return _context.Eventos.FirstOrDefault(evento => evento.EventoId == id);
         }
     }
 }
